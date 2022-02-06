@@ -1,0 +1,23 @@
+<h2>Por capital</h2>
+<hr />
+
+<div class="row">
+  <div class="col">
+    <app-country-input
+      placeholder="Buscar capital..."
+      (onEnter)="searchByCapital($event)"
+    ></app-country-input>
+  </div>
+</div>
+
+<hr />
+
+<div *ngIf="error" class="alert alert-danger">
+  No se encontr&oacute; nada con el t&eacute;rmino: {{ field }}
+</div>
+
+<div *ngIf="countries.length > 0" class="row">
+  <div class="col">
+    <app-country-table [countries]="countries"></app-country-table>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<h2>Por pa&iacute;s</h2>
+<hr />
+
+<div class="row">
+  <div class="col">
+    <app-country-input
+      placeholder="Buscar pa&iacute;s..."
+      (onDebounce)="suggestions($event)"
+      (onEnter)="searchCountry($event)"
+    ></app-country-input>
+  </div>
+</div>
+
+<ul class="list-group">
+  <li
+    *ngFor="let suggestedCountry of suggestedCountries"
+    class="list-group-item list-group-item-action"
+  >
+    <a class="nav-link" [routerLink]="['/country', suggestedCountry.cca2]">{{
+      suggestedCountry.name.common
+    }}</a>
+  </li>
+</ul>
+
+<hr />
+
+<div *ngIf="error" class="alert alert-danger">
+  No se encontr&oacute; nada con el t&eacute;rmino: {{ field }}
+</div>
+
+<div *ngIf="countries.length > 0" class="row">
+  <div class="col">
+    <app-country-table [countries]="countries"></app-country-table>
+  </div>
+</div>

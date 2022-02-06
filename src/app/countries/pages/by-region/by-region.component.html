@@ -1,0 +1,27 @@
+<h3>
+  Buscar por región <small>{{ activeRegion | titlecase }}</small>
+</h3>
+<hr />
+<h5>Seleccione la región</h5>
+
+<div class="row">
+  <div class="col">
+    <button
+      *ngFor="let region of regions"
+      [class]="getCssClass(region)"
+      (click)="searchByRegion(region)"
+    >
+      {{ region }}
+    </button>
+  </div>
+</div>
+
+<div *ngIf="error" class="alert alert-danger">
+  No se encontr&oacute; nada con el t&eacute;rmino: {{ activeRegion }}
+</div>
+
+<div *ngIf="countries.length > 0" class="row">
+  <div class="col">
+    <app-country-table [countries]="countries"></app-country-table>
+  </div>
+</div>

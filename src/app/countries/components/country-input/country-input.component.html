@@ -1,0 +1,10 @@
+<form (ngSubmit)="searchCountry()" autocomplete="off">
+  <input
+    [(ngModel)]="field"
+    (input)="keyHold($event)"
+    type="text"
+    name="field"
+    class="form-control"
+    [placeholder]="placeholder"
+  />
+</form>
